@@ -13,6 +13,11 @@ public class AnalyticsCounter {
 		// first get input
 		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
 		String line = reader.readLine();
+		// test for branch
+		int b = 0;
+		String branch;
+		System.out.println(b);
+
 
 		int i = 0;	// test branch
 		int headCount = 0;	// counts headaches
