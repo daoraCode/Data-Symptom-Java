@@ -30,7 +30,7 @@ public class AnalyticsCounter {
 				pupilCount++;
 			}
 
-			line = reader.readLine();	// get another symptom
+			line = reader.readLine();	// read line
 		}
 		
 		// next generate output
