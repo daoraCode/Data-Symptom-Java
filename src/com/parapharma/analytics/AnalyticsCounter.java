@@ -1,24 +1,63 @@
 package com.parapharma.analytics;
 
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
+	/*private static int headacheCount = 0;	// initialize to 0
 	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
-	
+	private static int pupilCount = 0;		// initialize to 0*/
+
 	public static void main(String args[]) throws Exception {
 		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
+
+
+		Path path = Paths.get(System.getProperty("user.dir")).resolve("symptoms.txt");
+		BufferedReader reader = new BufferedReader(new FileReader(path.toFile()));
+
+		Map<String, Integer> frequency = new HashMap<>();
 		String line = reader.readLine();
-		// test for branch
-		int b = 0;
-		String branch;
-		System.out.println(b);
+
+		while (line != null) {
+			//System.out.println("processing ling " + line);
+
+			if (!line.trim().equals("")) {
+				String[] symptoms = line.split(" ");
 
 
+				for (String symptom : symptoms) {
+					if (symptom == null || symptom.trim().equals("")) {
+						continue;
+					}
+
+					String processed = symptom.toLowerCase();
+					if (frequency.containsKey(processed)) {
+						frequency.put(processed, frequency.get(processed) + 1);
+					} else {
+						frequency.put(processed, 1);
+					}
+				}
+			}
+			line = reader.readLine();
+		}
+
+		System.out.println(frequency);
+		FileWriter writer = new FileWriter ("result.txt");
+		writer.write(String.valueOf(frequency));
+		writer.close();
+
+
+		}
+	}
+
+		/*
 		int i = 0;	// test branch
 		int headCount = 0;	// counts headaches
 		while (line != null) {
@@ -43,6 +82,5 @@ public class AnalyticsCounter {
 		writer.write("headache: " + headacheCount + "\n");
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
-	}
-}
+		writer.close(); */
+
