@@ -1,43 +1,53 @@
 package com.parapharma.analytics;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.IOException;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
-	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
-	
-	public static void main(String args[]) throws Exception {
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
-		String line = reader.readLine();
 
-		int i = 0;	// set i to 0
-		int headCount = 0;	// counts headaches
-		while (line != null) {
-			i++;	// increment i
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
 
-			line = reader.readLine();	// get another symptom
-		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
+
+	// class attributes (AnalyticsCounter class from Alex)
+	private String symptom = "";
+	public static int counter = 0;
+	private static int counterInstances = 0;
+
+	//----------Constructors-------------//
+	// constructor part1
+	public AnalyticsCounter() throws IOException {
+		counter++;
+		counterInstances++;
 	}
-}
+	// constructor part2
+	public AnalyticsCounter(String sSymptom) throws IOException {
+		symptom = sSymptom;
+		counter++;
+		counterInstances++;
+	}
+	//--------------end-----------------//
+
+
+
+	//--------Getters and Setters-------//
+	// return name of the symptom (symptom Getter)
+	public String getSymptom() {
+		return symptom;
+	}
+	// set name of the symptom (symptom Setter)
+	public void setSymptom(String sSymptom) {
+		symptom = sSymptom;
+	}
+	//-------------next attrbt.---------//
+	// to use the symptom instances count (counter Getter)
+	public static int getCounterInstances() {
+		return counterInstances;
+	}
+
+
+
+
+
+	}
+
