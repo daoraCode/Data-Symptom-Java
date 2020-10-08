@@ -49,6 +49,7 @@ public class AnalyticsCounter {
 		}
 
 		System.out.println(frequency);
+		System.out.println("");
 		FileWriter writer = new FileWriter ("result.out");
 		writer.write(String.valueOf(frequency));
 		writer.close();
