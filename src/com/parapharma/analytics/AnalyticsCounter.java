@@ -1,53 +1,84 @@
 package com.parapharma.analytics;
 
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AnalyticsCounter {
+
+
+public abstract class AnalyticsCounter {
+
+	public static void main(String[] args) {
 
 
 
-	// class attributes (AnalyticsCounter class from Alex)
-	private String symptom = "";
-	public static int counter = 0;
-	private static int counterInstances = 0;
 
-	//----------Constructors-------------//
-	// constructor part1
-	public AnalyticsCounter() throws IOException {
-		counter++;
-		counterInstances++;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/*BufferedReader br = null;
+		String line;
+		ReadSymptomDataFromFile fr = new ReadSymptomDataFromFile("symptoms.txt");
+
+		// method call
+		fr.GetSymptoms();
+		/*while (line != null) {
+			//System.out.println("processing ling " + line);
+
+			if (!line.trim().equals("")) {
+				String[] symptoms = line.split(" ");
+
+
+				for (String symptom : symptoms) {
+					if (symptom == null || symptom.trim().equals("")) {
+						continue;
+					}
+
+					String processed = symptom.toLowerCase();
+					if (frequency.containsKey(processed)) {
+						frequency.put(processed, frequency.get(processed) + 1);
+					} else {
+						frequency.put(processed, 1);
+					}
+				}
+			}
+			line = reader.readLine();
+		}
+
+		System.out.println(frequency);
+		System.out.println("");
+
 	}
-	// constructor part2
-	public AnalyticsCounter(String sSymptom) throws IOException {
-		symptom = sSymptom;
-		counter++;
-		counterInstances++;
+}*/
 	}
-	//--------------end-----------------//
-
-
-
-	//--------Getters and Setters-------//
-	// return name of the symptom (symptom Getter)
-	public String getSymptom() {
-		return symptom;
-	}
-	// set name of the symptom (symptom Setter)
-	public void setSymptom(String sSymptom) {
-		symptom = sSymptom;
-	}
-	//-------------next attrbt.---------//
-	// to use the symptom instances count (counter Getter)
-	public static int getCounterInstances() {
-		return counterInstances;
-	}
+}
 
 
 
 
-
-	}
 
